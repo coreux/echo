@@ -55,8 +55,13 @@ AC_MSG_CHECKING([whether to enable native language support (NLS)])
 AC_ARG_ENABLE([nls],[AS_HELP_STRING([--disable-nls],[disable native language support (NLS) (default=enabled)])],[build_nls=$enableval],[build_nls=yes])
 AC_MSG_RESULT([$build_nls])
 if test x"$build_nls" = x"yes" ; then
-   AC_CHECK_HEADERS([locale.h])
+   AC_CHECK_HEADERS([locale.h nl_types.h])
    AC_CHECK_FUNC([setlocale],,[AC_MSG_ERROR([cannot locate the setlocale() function required for native language support (NLS)])])
+   AC_CHECK_FUNC([catopen],,[AC_MSG_ERROR([cannot locate the catopen() function required for native language support (NLS)])])
+   AC_CHECK_PROGS([GENCAT],[gencat],[false])
+   if test x"$GENCAT" = x"false" ; then
+   	  AC_MSG_ERROR([cannot locate the gencat utility required for native language support (NLS)])
+   fi
    AC_DEFINE([ENABLE_NLS],[1],[Define if native language support (NLS) should be enabled])
 fi
 ])
