@@ -12,8 +12,9 @@ dnl  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 dnl  See the License for the specific language governing permissions and
 dnl  limitations under the License.
 
-m4_pattern_forbid([^DB_])dnl
-AC_DEFUN([DB_BUILD_ENABLE],[
+m4_pattern_forbid([^UX_])dnl
+
+AC_DEFUN([UX_BUILD_DOCS],[
 AC_ARG_ENABLE([docs],[AS_HELP_STRING([--disable-docs],[disable re-building documentation (default=auto)])],[build_docs=$enableval],[build_docs=auto])
 
 XML2MAN=false
@@ -48,3 +49,15 @@ AC_MSG_RESULT([$build_docs])
 AC_SUBST([XML2MAN])
 AC_SUBST([XML2HTML])
 ])
+
+AC_DEFUN([UX_ENABLE_NLS],[
+AC_MSG_CHECKING([whether to enable native language support (NLS)])
+AC_ARG_ENABLE([nls],[AS_HELP_STRING([--disable-nls],[disable native language support (NLS) (default=enabled)])],[build_nls=$enableval],[build_nls=yes])
+AC_MSG_RESULT([$build_nls])
+if test x"$build_nls" = x"yes" ; then
+   AC_CHECK_HEADERS([locale.h])
+   AC_CHECK_FUNC([setlocale],,[AC_MSG_ERROR([cannot locate the setlocale() function required for native language support (NLS)])])
+   AC_DEFINE([ENABLE_NLS],[1],[Define if native language support (NLS) should be enabled])
+fi
+])
+

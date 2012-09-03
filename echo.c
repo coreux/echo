@@ -21,6 +21,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef HAVE_LOCALE_H
+# include <locale.h>
+#endif
 
 int
 main(int argc, char **argv)
@@ -29,6 +32,9 @@ main(int argc, char **argv)
 	const char *p;
 	char *endp;
 
+#ifdef ENABLE_NLS
+	setlocale(LC_ALL, "");
+#endif
 	e = 0;
 	nonl = 0;
 	stop = 0;
