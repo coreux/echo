@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<refentry xml:id="echo-1" xmlns="http://docbook.org/ns" version="5.0" xml:lang="en">
+  <info>
+	<title>User Commands</title>
+	<productname>System Manager's Manual</productname>
+	<authorgroup>
+	  <author>
+		<personname>
+		  <firstname>Mo</firstname>
+		  <surname>McRoberts</surname>
+		</personname>
+	  </author>
+	</authorgroup>
+	<copyright>
+	  <year>2012</year>
+	  <holder>Mo McRoberts</holder>
+	</copyright>
+  </info>
+  
+  <refmeta>
+	<refentrytitle>echo</refentrytitle>
+	<manvolnum>1</manvolnum>
+  </refmeta>
+  
+  <refnamediv>
+	<refname>echo</refname>
+	<refpurpose>write arguments to standard output</refpurpose>
+  </refnamediv>
+  
+  <refsynopsisdiv>
+	<cmdsynopsis>
+	  <command>echo</command>
+	  <arg choice="opt" rep="repeat">string</arg>
+	</cmdsynopsis>
+  </refsynopsisdiv>
+  
+  <refsect1>
+	<title>Description</title>
+	<para>
+	  The <command>echo</command> utility writes its arguments to
+	  standard output, separated by a &lt;space&gt; and followed by a
+	  &lt;newline&gt;. If there are no arguments, only the &lt;newline&gt;
+	  is written.
+	</para>
+  </refsect1>
+  
+  <refsect1>
+	<title>Options</title>
+	<para>
+	  The <command>echo</command> utility does not perform option
+	  processing. All arguments are processed as operands.
+	</para>
+  </refsect1>
+
+  <refsect1>
+	<title>Operands</title>
+	<para>
+	  The following operands are supported:
+	</para>
+	<variablelist>
+	  <varlistentry>
+		<term><option>string</option></term>
+		<listitem>
+		  <para>
+			A string to be written to standard output. The following
+			character sequences are recognised within each string:
+		  </para>
+		  <variablelist>
+			<varlistentry>
+			  <term>\a</term>
+			  <listitem><para>Write an &lt;alert&gt;.</para></listitem>
+			</varlistentry>
+			
+			<varlistentry>
+			  <term>\b</term>
+			  <listitem><para>Write a &lt;backspace&gt;.</para></listitem>
+			</varlistentry>
+
+			<varlistentry>
+			  <term>\c</term>
+			  <listitem>
+				<para>
+				  Suppress the &lt;newline&gt; which would normally follow
+				  the final argument and immediately end processing. All
+				  characters following the '\c' are ignored.
+				</para>
+			  </listitem>
+			</varlistentry>
+			
+			<varlistentry>
+			  <term>\f</term>
+			  <listitem><para>Write a &lt;form-feed&gt;.</para></listitem>
+			</varlistentry>
+			
+			<varlistentry>
+			  <term>\n</term>
+			  <listitem><para>Write a &lt;newline&gt;.</para></listitem>
+			</varlistentry>
+
+			<varlistentry>
+			  <term>\r</term>
+			  <listitem>
+				<para>
+				  Write a &lt;carriage-return&gt;.
+				</para>
+			  </listitem>
+			</varlistentry>
+
+			<varlistentry>
+			  <term>\t</term>
+			  <listitem><para>Write a &lt;tab&gt;.</para></listitem>
+			</varlistentry>
+
+			<varlistentry>
+			  <term>\v</term>
+			  <listitem><para>Write a &lt;vertical-tab&gt;.</para></listitem>
+			</varlistentry>
+
+			<varlistentry>
+			  <term>\\</term>
+			  <listitem><para>Write a backslash character.</para></listitem>
+			</varlistentry>
+
+			<varlistentry>
+			  <term>\0<option>num</option></term>
+			  <listitem>
+				<para>
+				  Write an 8-bit character whose octal value is
+				  <option>num</option>.
+				</para>
+			  </listitem>
+			</varlistentry>
+
+		  </variablelist>
+		</listitem>
+	  </varlistentry>
+	</variablelist>
+  </refsect1>
+
+  <refsect1>
+	<title>Diagnostics</title>
+	<para>
+	  The following error values are returned:
+	</para>
+	<segmentedlist>
+	  <segtitle>Error value</segtitle>
+	  <segtitle>Diagnostic</segtitle>
+	  <seglistitem>
+		<seg><errorcode>0</errorcode></seg>
+		<seg>Successful completion.</seg>
+	  </seglistitem>
+	  <seglistitem>
+		<seg><errorcode>&gt;0</errorcode></seg>
+		<seg>An error occurred.</seg>
+	  </seglistitem>
+	</segmentedlist>
+  </refsect1>
+
+  <refsect1>
+	<title>Known issues</title>
+	<para>
+	  Portable applications wishing to make use of escape sequences or
+	  newline-inhibition should avoid the <command>echo</command> utility
+	  and should instead make use of
+	  <citerefentry><refentrytitle>printf</refentrytitle><manvolnum>1</manvolnum></citerefentry>.
+	</para>
+  </refsect1>
+
+  <refsect1>
+	<title>Standards</title>
+	<para>
+	  The <command>echo</command> utility conforms to the
+	  <citetitle>Single UNIX Specification, Version 3 (SUSv3)</citetitle>.
+	</para>
+  </refsect1>
+
+  <refsect1>
+	<title>See also</title>
+	<para>
+	  <citerefentry>
+		<refentrytitle>printf</refentrytitle>
+		<manvolnum>1</manvolnum>
+	  </citerefentry>.
+	</para>
+  </refsect1>
+
+</refentry>

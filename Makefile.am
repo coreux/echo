@@ -17,3 +17,19 @@ bin_PROGRAMS = echo
 doc_DATA = LICENSE-2.0
 
 echo_SOURCES = echo.c
+
+dist_man1_MANS = echo.1
+
+if BUILD_DOCS
+
+echo.1: echo.xml
+	xsltproc -nonet \
+		-param man.charmap.use.subset 0 \
+		-param make.year.ranges 1 \
+		-param make.single.year.ranges 1 \
+		-param man.authors.section.enabled 0 \
+		-param man.copyright.section.enabled 0 \
+		http://docbook.sourceforge.net/release/xsl-ns/current/manpages/docbook.xsl \
+		 $<
+
+endif
