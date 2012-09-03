@@ -14,7 +14,7 @@
 
 bin_PROGRAMS = echo
 
-doc_DATA = LICENSE-2.0 echo.1.html
+doc_DATA = README LICENSE-2.0 echo.1.html
 
 echo_SOURCES = echo.c
 
