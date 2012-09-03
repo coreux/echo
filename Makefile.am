@@ -14,7 +14,7 @@
 
 bin_PROGRAMS = echo
 
-doc_DATA = LICENSE-2.0
+doc_DATA = LICENSE-2.0 echo.1.html
 
 echo_SOURCES = echo.c
 
@@ -22,3 +22,6 @@ dist_man1_MANS = echo.1
 
 echo.1: echo.1.xml
 		$(XML2MAN) $<
+
+echo.1.html: echo.1.xml
+		$(XML2HTML) $< > $@
