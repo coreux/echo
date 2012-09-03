@@ -170,7 +170,8 @@
 	<title>Standards</title>
 	<para>
 	  The <command>echo</command> utility conforms to the
-	  <citetitle>Single UNIX Specification, Version 3 (SUSv3)</citetitle>.
+	  <citetitle>Single UNIX Specification, Version 3 (SUSv3)</citetitle> and
+	  the <citetitle>X/Open System Interfaces Extension</citetitle>.
 	</para>
   </refsect1>
 

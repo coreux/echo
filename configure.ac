@@ -23,6 +23,7 @@ AC_PROG_CC
 
 AC_ARG_ENABLE([docs],[AS_HELP_STRING([--disable-docs],[disable re-building documentation (default=auto)])],[build_docs=$enableval],[build_docs=auto])
 
+XML2MAN=false
 if test x"$build_docs" = x"yes" || test x"$build_docs" = x"auto" ; then
    AC_CHECK_PROGS([XSLTPROC],[xsltproc],[false])
    if test x"$XSLTPROC" = x"false" ; then
@@ -32,6 +33,13 @@ if test x"$build_docs" = x"yes" || test x"$build_docs" = x"auto" ; then
 	  build_docs=no
    else
       build_docs=yes
+	  XML2MAN='${XSLTPROC} -nonet \
+		-param man.charmap.use.subset 0 \
+		-param make.year.ranges 1 \
+		-param make.single.year.ranges 1 \
+		-param man.authors.section.enabled 0 \
+		-param man.copyright.section.enabled 0 \
+		http://docbook.sourceforge.net/release/xsl-ns/current/manpages/docbook.xsl'
    fi
 else
    build_docs=no
@@ -39,8 +47,7 @@ fi
 
 AC_MSG_CHECKING([whether to re-build documentation if needed])
 AC_MSG_RESULT([$build_docs])
-
-AM_CONDITIONAL([BUILD_DOCS],[test x"$build_docs" = x"yes"])
+AC_SUBST([XML2MAN])
 
 AC_CONFIG_FILES([Makefile])
 
